@@ -1,16 +1,20 @@
 package com.noah.hibernate.demo.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-@Table(name="hb_student_tracker")
+@Table(name="student")
 public class Student {
 	
 	@Id
 	@Column(name="id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY) 
+	// 當主鍵對應為AI時，則INSERT時ID為NULL時則需要加上@GeneratedValue 則會讓sql幫忙處理AI的問題
 	private Integer id;
 	
 	@Column(name="first_name")
